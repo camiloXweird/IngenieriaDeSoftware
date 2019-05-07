@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import{AuthService} from "../servicios/auth.service"
 import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class HomePage {
   email:string;
   password:string;
 
@@ -18,7 +18,8 @@ export class LoginPage implements OnInit {
 
   onSubmitLogin(){
     this.authService.login(this.email,this.password).then(res=>{
-      this.router.navigate(['/tabs']);
+      this.router.navigate(['/inicio-cajero']);
     }).catch(err => alert('Los datos son incorrectos o no existe el usuario'))
    }
+
 }

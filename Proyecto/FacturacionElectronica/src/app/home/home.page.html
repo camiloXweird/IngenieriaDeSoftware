@@ -1,13 +1,11 @@
 <ion-header>
   <ion-toolbar  color="medium">
-      <ion-title >Iniciar Sesión</ion-title>
+      <ion-title></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding  class="bg-image">
-  <br>
-   <img class= "iconologin" src="assets/icon/logo.png" >
-   <br>
+   <img class= "iconologin" src="assets/icon/logo.png">
     <ion-card> 
         <ion-card-content > 
           <ion-item>
@@ -21,7 +19,7 @@
               <ion-input clearInput type="password" [(ngModel)]="password" name="password"pattern="password"></ion-input>
             </ion-item>
             <br>
-            <ion-button  id="ingresar" expand="block"  shape="round" color="medium" (click)="onSubmitLogin()" >Ingresar</ion-button>
+            <ion-button  id="ingresar" expand="block"  shape="round" color="medium" (click)="onSubmitLogin()">Ingresar</ion-button>
           </ion-card-content>
     </ion-card >
 </ion-content>
