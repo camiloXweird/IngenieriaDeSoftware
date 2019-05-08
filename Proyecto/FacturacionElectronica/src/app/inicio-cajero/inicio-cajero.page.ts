@@ -10,23 +10,7 @@ import{AuthService} from "../servicios/auth.service";
 export class InicioCajeroPage implements OnInit {
   constructor(public authservice : AuthService,public actionSheetController: ActionSheetController) {}
   
-  OnLogout(){
-    this.authservice.logout();
-  }
-  async presentActionSheet() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Opciones',
-      buttons: [{
-        text: 'Cerrar Sesion',
-        role: 'destructive',
-        icon: 'log-out',
-        handler: () => {
-          this.OnLogout()
-        },
-      }]
-    });
-    await actionSheet.present();
-  }
+ 
   ngOnInit() {
   }
 
