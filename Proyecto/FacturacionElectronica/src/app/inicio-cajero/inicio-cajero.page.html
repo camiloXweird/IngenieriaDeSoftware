@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="medium">
-      <ion-button fill="outline" slot="start"color="medium" href="cajero()">
+      <ion-button fill="outline" slot="start"color="medium" (click)="atras()">
           <ion-icon name="arrow-dropleft" color="dark"></ion-icon>
         </ion-button>
     <ion-title></ion-title>
@@ -27,6 +27,10 @@
       <ion-input></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label class="labels">Valor</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label class="labels">Fecha</ion-label>
       <ion-datetime></ion-datetime>
     </ion-item>
@@ -45,7 +49,19 @@
       </ion-item>
       <ion-item>
         <ion-label class="labels">Correo</ion-label>
-        <ion-datetime></ion-datetime>
+        <ion-input></ion-input>
+      </ion-item>
+
+      <ion-item-divider>
+      <ion-label>
+        Estado de la factura
+     </ion-label>
+    </ion-item-divider>
+      <ion-item>
+        <ion-label class="labels">Estado factura</ion-label>
+        <ion-select [compareWith]="compareWith">
+          <ion-select-option *ngFor="let user of users">{{user.first + ' ' + user.last}}</ion-select-option>
+        </ion-select>
       </ion-item>
 
         <ion-button expand="full">Crear factura</ion-button>
