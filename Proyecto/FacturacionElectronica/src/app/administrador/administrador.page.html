@@ -9,13 +9,13 @@
   <div>
     <ion-img  class="img" src="assets/icon/logoAdmi.png"></ion-img>
   </div> 
-      <ion-button  color="light" class= "boton"expand="block">Consultar facturas del día</ion-button>
+      <ion-button  color="light" class= "boton"expand="block" (click)="consultarFacturasDia()">Consultar facturas del día</ion-button>
       <br>
-      <ion-button  color="danger"class= "boton"expand="block">Consultar factura del mes</ion-button>
+      <ion-button  color="danger"class= "boton"expand="block" (click)="consultarFacturasMes()">Consultar factura del mes</ion-button>
       <br>
-      <ion-button  color="tertiary"class= "boton"expand="block">Reportes IVA</ion-button>
+      <ion-button  color="tertiary"class= "boton"expand="block" (click)="reportesIva()">Reportes IVA</ion-button>
       <br>
-      <ion-button  color="medium"class= "boton"expand="block">Cerrar Sesión</ion-button> 
+      <ion-button  color="medium"class= "boton"expand="block" (click)="OnLogout()">Cerrar Sesión</ion-button> 
     </ion-content>
 
 
