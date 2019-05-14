@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate : [NologinGuard]},
   { path: 'inicio-cajero', loadChildren: './inicio-cajero/inicio-cajero.module#InicioCajeroPageModule'},
-  { path: 'administrador', loadChildren: './administrador/administrador.module#AdministradorPageModule' },
+  { path: 'administrador', loadChildren: './administrador/administrador.module#AdministradorPageModule',canActivate : [AuthGuard] },
   { path: 'factura-dia', loadChildren: './factura-dia/factura-dia.module#FacturaDiaPageModule' },
   { path: 'factura-mes', loadChildren: './factura-mes/factura-mes.module#FacturaMesPageModule' },
   { path: 'reporte-iva', loadChildren: './reporte-iva/reporte-iva.module#ReporteIvaPageModule' },

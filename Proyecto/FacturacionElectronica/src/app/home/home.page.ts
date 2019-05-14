@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import{AuthService} from "../servicios/auth.service"
 import { Router } from "@angular/router";
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-home',
