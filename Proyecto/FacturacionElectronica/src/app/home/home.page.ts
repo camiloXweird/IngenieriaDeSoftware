@@ -18,7 +18,10 @@ export class HomePage {
 
   onSubmitLogin(){
     this.authService.login(this.email,this.password).then(res=>{
-      this.router.navigate(['/inicio-cajero']);
+      if(firebase.auth().currentUser.uid=="K4hqU8cheFfVcSWQvygD99TQPQ23"){
+        this.router.navigate(['/administrador']);
+      }else{
+      this.router.navigate(['/inicio-cajero']);}
     }).catch(err => alert('Los datos son incorrectos o no existe el usuario'))
    }
 
