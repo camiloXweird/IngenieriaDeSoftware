@@ -18,7 +18,7 @@ export class HomePage {
 
   onSubmitLogin(){
     this.authService.login(this.email,this.password).then(res=>{
-      this.router.navigate(['/cajero']);
+      this.router.navigate(['/inicio-cajero']);
     }).catch(err => alert('Los datos son incorrectos o no existe el usuario'))
    }
 

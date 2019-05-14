@@ -9,32 +9,22 @@ import { Router } from "@angular/router";
   styleUrls: ['./inicio-cajero.page.scss'],
 })
 export class InicioCajeroPage implements OnInit {
-  constructor(public authservice : AuthService,public actionSheetController: ActionSheetController
-    ,public router: Router) {}
+
+  constructor(public authservice : AuthService,public actionSheetController: ActionSheetController,public router: Router) { }
   
- 
+  OnLogout(){
+    this.authservice.logout();
+  }
+  
   ngOnInit() {
   }
 
-  atras(){
+  ventas(){
     this.router.navigate(['/cajero']);
   }
 
-  users: any[] = [
-    {
-      id: 1,
-      first: 'Primer estado factura'
-    },
-    {
-      id: 2,
-      first: 'Segundo estado factura'
-    }
-  ];
+  consultarFacturas(){
+    this.router.navigate(['/factura-dia']);
+  }
 
-  compareWithFn = (o1, o2) => {
-    return o1 && o2 ? o1.id === o2.id : o1 === o2;
-  };
-
-  compareWith = this.compareWithFn;
 }
-
