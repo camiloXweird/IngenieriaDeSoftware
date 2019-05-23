@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
-import{AuthService} from "../servicios/auth.service";
+import { AuthService } from "../servicios/auth.service";
 import { Router } from "@angular/router";
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-cajero',
@@ -9,14 +10,23 @@ import { Router } from "@angular/router";
   styleUrls: ['./cajero.page.scss'],
 })
 export class CajeroPage implements OnInit {
-  constructor(public authservice : AuthService,public actionSheetController: ActionSheetController
-    ,public router: Router) {}
-  
- 
+  constructor(public authservice: AuthService, public actionSheetController: ActionSheetController
+    , public router: Router) { }
+
+     db = firebase.firestore();
+  factura: string;
+  codigo: string;
+  cant: number;
+  valor: number;
+  fecha: string;
+  nombre: string;
+  telefono: string;
+  correo: string;
+
   ngOnInit() {
   }
 
-  atras(){
+  atras() {
     this.router.navigate(['/inicio-cajero']);
   }
 
@@ -36,5 +46,22 @@ export class CajeroPage implements OnInit {
   };
 
   compareWith = this.compareWithFn;
+
+
+  enviar_Datos() {
+    this.db.collection("facturas").doc(this.fecha).set({
+      numero_factura:this.factura,
+      codigo_producto:this.codigo,
+      cantidad:this.cant,
+      valor_compra:this.valor,
+      nombre:this.nombre,
+      telefono:this.telefono,
+      corre:this.correo
+    }).then((datos)=>{
+      console.log(datos)
+    }).catch((error)=>{
+      console.log(error);
+    })
+  }
 }
 

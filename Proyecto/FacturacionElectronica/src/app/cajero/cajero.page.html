@@ -1,71 +1,58 @@
 <ion-header>
-    <ion-toolbar color="medium">
-      <ion-button fill="outline" slot="start"color="medium" (click)="atras()">
-        <ion-icon name="arrow-dropleft" color="dark"></ion-icon>
-      </ion-button>
-      <ion-title></ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content [scrollEvents]="false">
-    <ion-list>
-      <ion-item-divider>
-         <ion-label>
-           Datos de la compra
-        </ion-label>
-      </ion-item-divider>
-      <ion-item>
-        <ion-label class="labels">No. factura</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label class="labels">Codigo del producto</ion-label>
-        <ion-input autofocus="true"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label class="labels">Cantidad</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label class="labels">Valor</ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label class="labels">Fecha</ion-label>
-        <ion-datetime></ion-datetime>
-      </ion-item>
-      <ion-item-divider>
-          <ion-label>
-            Datos del cliente
-         </ion-label>
-      </ion-item-divider>
-      <ion-item>
-          <ion-label class="labels">Nombre</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label class="labels">Telefono</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label class="labels">Correo</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-  
-        <ion-item-divider>
-        <ion-label>
-          Estado de la factura
-       </ion-label>
-      </ion-item-divider>
-        <ion-item>
-          <ion-label class="labels">Estado factura</ion-label>
-          <ion-select [compareWith]="compareWith">
-            <ion-select-option *ngFor="let user of users">{{user.first + ' ' + user.last}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-  
-          <ion-button expand="full">Crear factura</ion-button>
-  
-    </ion-list>
-  </ion-content>
-  
+  <ion-toolbar color="medium">
+    <ion-button fill="outline" slot="start" color="medium" (click)="atras()">
+      <ion-icon name="arrow-dropleft" color="dark"></ion-icon>
+    </ion-button>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="false">
+  <ion-list>
+    <ion-item-divider>
+      <ion-label>
+        Datos de la compra
+      </ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label class="labels">No. factura</ion-label>
+      <ion-input [(ngModel)]="factura"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="labels">Codigo del producto</ion-label>
+      <ion-input [(ngModel)]="codigo" autofocus="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="labels">Cantidad</ion-label>
+      <ion-input [(ngModel)]="cant"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="labels">Valor</ion-label>
+      <ion-input [(ngModel)]="valor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="labels">Fecha</ion-label>
+      <ion-datetime [(ngModel)]="fecha"></ion-datetime>
+    </ion-item>
+    <ion-item-divider>
+      <ion-label>
+        Datos del cliente
+      </ion-label>
+    </ion-item-divider>
+    <ion-item>
+      <ion-label class="labels">Nombre</ion-label>
+      <ion-input [(ngModel)]="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="labels">Telefono</ion-label>
+      <ion-input [(ngModel)]="telefono"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label class="labels">Correo</ion-label>
+      <ion-input [(ngModel)]="correo"></ion-input>
+    </ion-item>
+    <ion-button expand="full" (click)="enviar_Datos()">Aceptar compra</ion-button>
+
+  </ion-list>
+
+</ion-content>
