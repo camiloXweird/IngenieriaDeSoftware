@@ -7,13 +7,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [scrollEvents]="false">
+<ion-content [scrollEvents]="false" class="bg-image">
+<br>
+<ion-card  class="card">
+<ion-card-header class= "card"> 
+    <ion-card-title> Datos de Compra</ion-card-title> 
+  </ion-card-header>
+  <ion-card-content > 
   <ion-list>
-    <ion-item-divider>
-      <ion-label>
-        Datos de la compra
-      </ion-label>
-    </ion-item-divider>
     <ion-item>
       <ion-label class="labels">No. factura</ion-label>
       <ion-input [(ngModel)]="factura"></ion-input>
@@ -96,8 +97,10 @@
       </ion-item>
     <ion-item-divider>
       <ion-label>
-        Datos del cliente
+       <ion-card-title> Datos de Cliente</ion-card-title> 
+       <br>
       </ion-label>
+      
     </ion-item-divider>
     <ion-item>
       <ion-label class="labels">Nombre</ion-label>
@@ -111,8 +114,10 @@
       <ion-label class="labels">Correo</ion-label>
       <ion-input [(ngModel)]="correo"></ion-input>
     </ion-item>
-    <ion-button expand="full" (click)="enviar_Datos()">Aceptar compra</ion-button>
-
   </ion-list>
+  </ion-card-content >
+</ion-card > 
+<ion-button  color="light" class= "boton"expand="block" (click)="enviar_Datos()">Aceptar compra</ion-button>
+
 
 </ion-content>
