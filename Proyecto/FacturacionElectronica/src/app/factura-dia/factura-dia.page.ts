@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActionSheetController } from '@ionic/angular';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActionSheetController, NavController } from '@ionic/angular';
 import { AuthService } from "../servicios/auth.service";
 import { Router } from "@angular/router";
 import * as firebase from 'firebase';
-import { FacturaMesPage } from '../factura-mes/factura-mes.page';
+import { FacturaPage } from '../factura/factura.page';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { FacturaMesPage } from '../factura-mes/factura-mes.page';
 })
 export class FacturaDiaPage implements OnInit {
 
-  constructor(public authservice: AuthService, public actionSheetController: ActionSheetController
+  constructor(public navCtrl: NavController,public authservice: AuthService, public actionSheetController: ActionSheetController
     , public router: Router) { }
 
   db = firebase.firestore();
@@ -38,23 +38,27 @@ export class FacturaDiaPage implements OnInit {
     let anno = new Date().getFullYear();
     this.db.collection(""+anno).doc(""+mes).collection(""+dia).get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
-        let button = document.createElement("ion-button");
-        let id_documento = document.createTextNode(doc.id);
-        button.color = 'medium';
-        button.expand = 'full';
-        button.fill = 'clear';
-        button.onclick = 'mostrarFactura()';
-          button.appendChild(id_documento);
-          document.getElementById("facturas").appendChild(button);
+        let item = document.createElement('ion-item');
+        let label = document.createElement('ion-input');
+        let button = document.createElement('ion-button');
+        let textoLabel = document.createTextNode(doc.id);
+        let textoButton = document.createTextNode('ver factura');
+        label.disabled = true;
+        label.appendChild(textoLabel);
+        item.appendChild(label);
+        button.click = this.mostrarFactura();
+        button.appendChild(textoButton);
+        item.appendChild(button);
+          document.getElementById("facturas").appendChild(item);
           //console.log(doc.id, " => ", doc.data());
         });
-    }).catch(() => {
-      console.log("error");
+    }).catch((error) => {
+      console.log("error", error);
     });
   }
 
   mostrarFactura(){
-
+    console.log("ok");
   }
 
 }
