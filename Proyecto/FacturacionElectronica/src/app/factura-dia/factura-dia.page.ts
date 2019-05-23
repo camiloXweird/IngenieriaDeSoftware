@@ -3,8 +3,6 @@ import { ActionSheetController } from '@ionic/angular';
 import { AuthService } from "../servicios/auth.service";
 import { Router } from "@angular/router";
 import * as firebase from 'firebase';
-import { runInThisContext } from 'vm';
-import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 
 @Component({
   selector: 'app-factura-dia',
@@ -14,13 +12,11 @@ import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 export class FacturaDiaPage implements OnInit {
 
   constructor(public authservice: AuthService, public actionSheetController: ActionSheetController
-    , public router: Router) {}
+    , public router: Router) { }
 
-    //db = firebase.firestore();
-   // lista_facturas:'';
-    //lista = document.getElementById('lista-facturas');
+  db = firebase.firestore();
   ngOnInit() {
-    
+
   }
 
   atras() {
@@ -31,16 +27,22 @@ export class FacturaDiaPage implements OnInit {
       this.router.navigate(['/inicio-cajero'])
       return false;
     }
+
   }
-/*
-  facturas(){
-    this.db.collection("facturas").get().then(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
-        this.lista_facturas += '<ion-item><ion-label type="button" value="'+doc.id+'></ion-label></ion-item>';
+
+  facturas() {
+    this.db.collection("facturas").get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          let item = document.createElement("ion-item");
+          let button = document.createElement("ion-button");
+          let id_documento = document.createTextNode(doc.id);
+          item.appendChild(button);
+          button.appendChild(id_documento);
+          document.getElementById("lista").appendChild(item);
           //console.log(doc.id, " => ", doc.data());
-      });
-      this.lista.html(this.lista_facturas);
-  });
-  }*/
+        });
+    });
+
+  }
 
 }
