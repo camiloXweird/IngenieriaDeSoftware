@@ -56,7 +56,7 @@ export class CajeroPage implements OnInit {
       valor_compra:this.valor,
       nombre:this.nombre,
       telefono:this.telefono,
-      corre:this.correo
+      correo:this.correo
     }).then((datos)=>{
       console.log(datos)
     }).catch((error)=>{

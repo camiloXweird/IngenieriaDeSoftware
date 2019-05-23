@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionSheetController } from '@ionic/angular';
+import { ActionSheetController} from '@ionic/angular';
 import { AuthService } from "../servicios/auth.service";
 import { Router } from "@angular/router";
 import * as firebase from 'firebase';
@@ -31,6 +31,7 @@ export class FacturaDiaPage implements OnInit {
   }
 
   facturas() {
+    this.router.navigate(['/factura']);//borrar
     this.db.collection("facturas").get().then(function (querySnapshot) {
         querySnapshot.forEach(function (doc) {
           let item = document.createElement("ion-item");
