@@ -13,12 +13,14 @@ export class CajeroPage implements OnInit {
   constructor(public authservice: AuthService, public actionSheetController: ActionSheetController
     , public router: Router) { }
 
-     db = firebase.firestore();
+  db = firebase.firestore();
   factura: string;
   codigo: string;
   cant: number;
   valor: number;
-  fecha: string;
+  fecha_dia: string;
+  fecha_mes: string;
+  fecha_anno: string;
   nombre: string;
   telefono: string;
   correo: string;
@@ -49,19 +51,19 @@ export class CajeroPage implements OnInit {
 
 
   enviar_Datos() {
-    this.db.collection("facturas").doc(this.fecha).set({
-      numero_factura:this.factura,
-      codigo_producto:this.codigo,
-      cantidad:this.cant,
-      valor_compra:this.valor,
-      nombre:this.nombre,
-      telefono:this.telefono,
-      correo:this.correo
-    }).then((datos)=>{
+    this.db.collection(this.fecha_anno).doc(this.fecha_mes).collection(this.fecha_dia).doc(this.factura).set({
+      codigo_producto: this.codigo,
+      cantidad: this.cant,
+      valor_compra: this.valor,
+      nombre: this.nombre,
+      telefono: this.telefono,
+      correo: this.correo
+    }).then((datos) => {
       console.log(datos)
-    }).catch((error)=>{
+    }).catch((error) => {
       console.log(error);
     })
   }
+
 }
 

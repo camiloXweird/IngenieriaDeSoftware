@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionSheetController} from '@ionic/angular';
+import { ActionSheetController } from '@ionic/angular';
 import { AuthService } from "../servicios/auth.service";
 import { Router } from "@angular/router";
 import * as firebase from 'firebase';
+
 
 @Component({
   selector: 'app-factura-dia',
@@ -33,13 +34,19 @@ export class FacturaDiaPage implements OnInit {
   facturas() {
     this.router.navigate(['/factura']);//borrar
     this.db.collection("facturas").get().then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          let item = document.createElement("ion-item");
-          let button = document.createElement("ion-button");
-          let id_documento = document.createTextNode(doc.id);
+      querySnapshot.forEach(function (doc) {
+        let item = document.createElement("ion-item");
+        let button = document.createElement("ion-button");
+        let id_documento = document.createTextNode(doc.id);
+        button.color = 'medium';
           item.appendChild(button);
           button.appendChild(id_documento);
           document.getElementById("lista").appendChild(item);
+
+
+
+
+
           //console.log(doc.id, " => ", doc.data());
         });
     });
