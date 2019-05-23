@@ -43,7 +43,9 @@ export class FacturaDiaPage implements OnInit {
         button.color = 'medium';
         button.expand = 'full';
         button.fill = 'clear';
-        button.onclick = 'mostrarFactura()';
+        button.onclick = () => {
+          console.log()
+        } ;
           button.appendChild(id_documento);
           document.getElementById("facturas").appendChild(button);
           //console.log(doc.id, " => ", doc.data());
