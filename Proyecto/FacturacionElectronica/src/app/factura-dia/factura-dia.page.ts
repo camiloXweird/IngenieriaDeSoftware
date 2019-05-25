@@ -5,7 +5,6 @@ import { Router } from "@angular/router";
 import * as firebase from 'firebase';
 import { FacturaPage } from '../factura/factura.page';
 
-
 @Component({
   selector: 'app-factura-dia',
   templateUrl: './factura-dia.page.html',
