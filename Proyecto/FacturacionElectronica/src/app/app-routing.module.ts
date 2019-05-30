@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'factura-dia', loadChildren: './factura-dia/factura-dia.module#FacturaDiaPageModule' },
   { path: 'factura-mes', loadChildren: './factura-mes/factura-mes.module#FacturaMesPageModule' },
   { path: 'reporte-iva', loadChildren: './reporte-iva/reporte-iva.module#ReporteIvaPageModule' },
-  { path: 'factura', loadChildren: './factura/factura.module#FacturaPageModule' },
+  { path: 'factura:id', loadChildren: './factura/factura.module#FacturaPageModule' },
   { path: 'cajero', loadChildren: './cajero/cajero.module#CajeroPageModule', canActivate : [AuthGuard] }
 
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-factura',
@@ -9,9 +9,12 @@ import { Router } from "@angular/router";
 })
 export class FacturaPage implements OnInit {
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, public activeRoute: ActivatedRoute) { }
 
   db = firebase.firestore();
+
+  factura = null;
+
   nombre_cliente: String;
   telefono_cliente: String;
   correo_cliente: String;
@@ -22,12 +25,14 @@ export class FacturaPage implements OnInit {
   valor_compra: number;
 
   ngOnInit() {
+    this.factura = this.activeRoute.snapshot.paramMap.get('id');
+    console.log(this.factura);
     this.mostrarNombre();
   }
 
 
   atras() {
-      this.router.navigate(['/factura-dia'])
+    this.router.navigate(['/factura-dia'])
   }
 
   mostrarNombre() {

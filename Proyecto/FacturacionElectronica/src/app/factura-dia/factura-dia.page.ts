@@ -1,9 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActionSheetController, NavController } from '@ionic/angular';
 import { AuthService } from "../servicios/auth.service";
-import { Router } from "@angular/router";
+import { Router, Routes } from "@angular/router";
 import * as firebase from 'firebase';
-import { FacturaPage } from '../factura/factura.page';
 
 @Component({
   selector: 'app-factura-dia',
@@ -16,6 +15,8 @@ export class FacturaDiaPage implements OnInit {
     , public router: Router) { }
 
   db = firebase.firestore();
+  dato: string;
+
   ngOnInit() {
     return this.facturas();
   }
@@ -32,66 +33,23 @@ export class FacturaDiaPage implements OnInit {
   }
 
   facturas() {
-    let dia = new Date().getDay();
-    let mes = new Date().getMonth();
-    let anno = new Date().getFullYear();
-    this.db.collection("" + anno).doc("" + mes).collection("" + dia).get().then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        let label = document.createElement('ion-input');
+    let dia = 4;// new Date().getDay();
+    let mes = 4;//new Date().getMonth();
+    let anno = 2019;//new Date().getFullYear();
+    this.db.collection("" + anno).doc(mes + "").collection("" + dia).get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        let item = document.createElement('ion-item');
         let button = document.createElement('ion-button');
-        let textoLabel = document.createTextNode(doc.id);
-        let textoButton = document.createTextNode('ver factura');
-        label.disabled = true;
-        label.appendChild(textoLabel);
+        let lista = document.getElementById('facturas');
+        let textoButton = document.createTextNode(doc.id);
+        button.onclick = () => {
+        this.dato = button.innerHTML;
+          this.router.navigate(['/factura', this.dato]);//enviar datos
+        };
+        lista.appendChild(item);
+        item.appendChild(button);
         button.appendChild(textoButton);
-        document.getElementById("facturas").appendChild(label);
-        document.getElementById("facturas").appendChild(button);
-        button.onclick = ()=>{
-          let lista = document.createElement('ion-list');
-          let labelf = document.createElement('ion-label');
-          let labelf1 = document.createElement('ion-label');
-          let labelf2 = document.createElement('ion-label');
-          let labelf3 = document.createElement('ion-label');
-          let labelf4 = document.createElement('ion-label');
-          let labelf5 = document.createElement('ion-label');
-
-          let br = document.createElement('br');
-          lista.appendChild(labelf);
-          lista.appendChild(labelf1);
-          lista.appendChild(labelf2);
-          lista.appendChild(labelf3);
-          lista.appendChild(labelf4);
-          lista.appendChild(labelf5);
-          let textolabelf = document.createTextNode('Nombre del cliente: '+doc.data().nombre);
-          let textolabelf1 = document.createTextNode('Telefono del cliente: '+doc.data().telefono);
-          let textolabelf2 = document.createTextNode('Correo del cliente: '+doc.data().correo);
-          let textolabelf3 = document.createTextNode('Cantidad de productos comprados: '+doc.data().cantidad);
-          let textolabelf4 = document.createTextNode('Codigos de los productos: '+doc.data().codigo_producto);
-          let textolabelf5 = document.createTextNode('Valor de la compra: '+doc.data().valor_compra);
-          labelf.appendChild(textolabelf);
-          labelf.appendChild(br);
-          labelf1.appendChild(textolabelf1);
-          lista.appendChild(br);
-          labelf2.appendChild(textolabelf2);
-          lista.appendChild(br);
-          labelf3.appendChild(textolabelf3);
-          lista.appendChild(br);
-          labelf4.appendChild(textolabelf4);
-          lista.appendChild(br);
-          labelf5.appendChild(textolabelf5);
-          
-          document.getElementById("facturas").appendChild(lista);
-
-        }
-        //console.log(doc.id, " => ", doc.data());
       });
-    }).catch((error) => {
-      console.log("error", error);
     });
   }
-
-  mostrarFactura() {
-    console.log("ok");
-  }
-
 }
