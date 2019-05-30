@@ -40,6 +40,8 @@ export class FacturaDiaPage implements OnInit {
       querySnapshot.forEach((doc) => {
         let item = document.createElement('ion-item');
         let button = document.createElement('ion-button');
+        button.color = 'danger';
+        button.expand = 'block';
         let lista = document.getElementById('facturas');
         let textoButton = document.createTextNode(doc.id);
         button.onclick = () => {

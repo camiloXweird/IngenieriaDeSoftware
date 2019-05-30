@@ -48,9 +48,8 @@ export class FacturaMesPage implements OnInit {
       querySnapshot.forEach(function (doc) {
         let button = document.createElement("ion-button");
         let id_documento = document.createTextNode(doc.id);
-        button.color = 'medium';
-        button.expand = 'full';
-        button.fill = 'clear';
+        button.color = 'light';
+        button.expand = 'block';
         button.onclick = () => {
           "mostrarFactura();"
         } ;

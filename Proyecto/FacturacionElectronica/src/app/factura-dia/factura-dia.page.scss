@@ -1,0 +1,18 @@
+.card {
+    background-color: #fff   ;
+    box-shadow: none;
+  }
+
+.labels{
+    color: gray
+}
+.bg-image{
+    --background: url('/assets/icon/fondo1.jpg') no-repeat center center / cover;
+}
+.boton{
+    width:65%;
+    height: 6%;
+    margin-top: 15%;
+    justify-content: center;
+    margin: auto auto;
+}
