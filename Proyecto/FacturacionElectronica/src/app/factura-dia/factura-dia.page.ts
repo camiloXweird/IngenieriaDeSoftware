@@ -15,7 +15,7 @@ export class FacturaDiaPage implements OnInit {
     , public router: Router) { }
 
   db = firebase.firestore();
-  dato: string;
+  factura: string;
 
   ngOnInit() {
     return this.facturas();
@@ -33,23 +33,21 @@ export class FacturaDiaPage implements OnInit {
   }
 
   facturas() {
-    let dia = 4;// new Date().getDay();
-    let mes = 4;//new Date().getMonth();
-    let anno = 2019;//new Date().getFullYear();
+    let dia =  new Date().getDay();
+    let mes = new Date().getMonth();
+    let anno = new Date().getFullYear();
     this.db.collection("" + anno).doc(mes + "").collection("" + dia).get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        let item = document.createElement('ion-item');
         let button = document.createElement('ion-button');
         button.color = 'danger';
-        button.expand = 'block';
+        button.expand = 'full';
         let lista = document.getElementById('facturas');
         let textoButton = document.createTextNode(doc.id);
         button.onclick = () => {
-        this.dato = button.innerHTML;
-          this.router.navigate(['/factura', this.dato]);//enviar datos
+        this.factura = button.innerHTML;
+          this.router.navigate(['/factura', this.factura, anno, mes, dia]);//enviar datos
         };
-        lista.appendChild(item);
-        item.appendChild(button);
+        lista.appendChild(button);
         button.appendChild(textoButton);
       });
     });
