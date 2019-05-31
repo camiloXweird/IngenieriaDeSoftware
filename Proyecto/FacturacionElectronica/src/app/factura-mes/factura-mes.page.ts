@@ -13,11 +13,14 @@ export class FacturaMesPage implements OnInit {
 
   constructor(public authservice: AuthService, public actionSheetController: ActionSheetController
     , public router: Router) { }
+    db = firebase.firestore();
+    factura: string;
+  
 
   ngOnInit() {
     return this.facturas();
   }
-  db = firebase.firestore();
+ 
   atras() {
     if (firebase.auth().currentUser.uid == "K4hqU8cheFfVcSWQvygD99TQPQ23") {
       this.router.navigate(['/administrador'])
@@ -40,27 +43,27 @@ export class FacturaMesPage implements OnInit {
   }
     )}
 
-  facturas() {
-    let dia = new Date().getDay();
-    let mes = new Date().getMonth();
-    let anno = new Date().getFullYear();
-    this.db.collection(""+anno).doc(""+mes).collection(""+dia).get().then(function (querySnapshot) {
-      querySnapshot.forEach(function (doc) {
-        let button = document.createElement("ion-button");
-        let id_documento = document.createTextNode(doc.id);
-        button.color = 'light';
-        button.expand = 'block';
-        button.onclick = () => {
-          "mostrarFactura();"
-        } ;
-          button.appendChild(id_documento);
-          document.getElementById("facturas").appendChild(button);
-          //console.log(doc.id, " => ", doc.data());
+    facturas() {
+
+      let dia =  4;//new Date().getDay();
+      let mes = 4;//new Date().getMonth();
+      let anno = 2019;//new Date().getFullYear();
+      this.db.collection("" + anno).doc(mes + "").collection("" + dia).get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          let button = document.createElement('ion-button');
+          button.color = 'danger';
+          button.expand = 'block';
+          let lista = document.getElementById('facturas');
+          let textoButton = document.createTextNode(doc.id);
+          button.onclick = () => {
+          this.factura = button.innerHTML;
+            this.router.navigate(['/factura', this.factura, anno, mes, dia]);//enviar datos
+          };
+          lista.appendChild(button);
+          button.appendChild(textoButton);
         });
-    }).catch(() => {
-      console.log("error");
-    });
-  }
+      });
+    }
 
 
 }
