@@ -29,10 +29,10 @@ export class FacturaDiaPage implements OnInit {
       this.router.navigate(['/inicio-cajero'])
       return false;
     }
-
   }
 
   facturas() {
+
     let dia =  4;//new Date().getDay();
     let mes = 4;//new Date().getMonth();
     let anno = 2019;//new Date().getFullYear();
