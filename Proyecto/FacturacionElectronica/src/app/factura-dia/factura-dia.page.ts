@@ -32,14 +32,15 @@ export class FacturaDiaPage implements OnInit {
   }
 
   facturas() {
-    let dia = 4;// new Date().getDay();
+
+    let dia =  4;//new Date().getDay();
     let mes = 4;//new Date().getMonth();
     let anno = 2019;//new Date().getFullYear();
     this.db.collection("" + anno).doc(mes + "").collection("" + dia).get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         let button = document.createElement('ion-button');
         button.color = 'danger';
-        button.expand = 'full';
+        button.expand = 'block';
         let lista = document.getElementById('facturas');
         let textoButton = document.createTextNode(doc.id);
         button.onclick = () => {
