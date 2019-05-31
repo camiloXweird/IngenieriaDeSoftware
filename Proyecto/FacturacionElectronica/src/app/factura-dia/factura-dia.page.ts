@@ -29,13 +29,12 @@ export class FacturaDiaPage implements OnInit {
       this.router.navigate(['/inicio-cajero'])
       return false;
     }
-
   }
 
   facturas() {
-    let dia =  new Date().getDay();
-    let mes = new Date().getMonth();
-    let anno = new Date().getFullYear();
+    let dia = 4;// new Date().getDay();
+    let mes = 4;//new Date().getMonth();
+    let anno = 2019;//new Date().getFullYear();
     this.db.collection("" + anno).doc(mes + "").collection("" + dia).get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         let button = document.createElement('ion-button');

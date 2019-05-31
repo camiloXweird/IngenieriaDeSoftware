@@ -26,6 +26,7 @@ export class CajeroPage implements OnInit {
   correo: string;
 
   ngOnInit() {
+    this.productos();
   }
 
   atras() {
@@ -64,8 +65,21 @@ export class CajeroPage implements OnInit {
       console.log(datos)
     }).catch((error) => {
       console.log(error);
-    })
+    });
   }
+
+  productos(){
+    let productos = document.getElementById('productos');
+    this.db.collection('productos').get().then((querySnapshot)=>{
+      querySnapshot.forEach((doc)=>{
+        let select_option = document.createElement('ion-select-option');
+        let textSelect = document.createTextNode(doc.id+' - '+doc.data().nombre);
+        select_option.value = doc.id;
+        productos.appendChild(select_option);
+        select_option.appendChild(textSelect);
+      });
+    });
+  };
 
 }
 

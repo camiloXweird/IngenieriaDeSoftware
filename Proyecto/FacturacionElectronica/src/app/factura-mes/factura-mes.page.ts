@@ -30,9 +30,9 @@ export class FacturaMesPage implements OnInit {
   }
 
   mostrarFactura(){
-    let dia = new Date().getDay();
-    let mes = new Date().getMonth();
-    let anno = new Date().getFullYear();
+    let dia = 4;//new Date().getDay();
+    let mes = 4;//new Date().getMonth();
+    let anno = 2019;//new Date().getFullYear();
     this.db.collection(""+anno).doc(""+mes).get().then(function (querySnapshot) {
     if(""+mes == '1'){
       

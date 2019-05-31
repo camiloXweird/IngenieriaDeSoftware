@@ -20,16 +20,17 @@
       <ion-input [(ngModel)]="factura"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label class="labels">Codigo del producto</ion-label>
-      <ion-input [(ngModel)]="codigo" autofocus="true"></ion-input>
+      <ion-label class="labels">Producto</ion-label>
+      <ion-select id='productos' [(ngModel)]="codigo" autofocus="true"></ion-select>
     </ion-item>
     <ion-item>
       <ion-label class="labels">Cantidad</ion-label>
       <ion-input [(ngModel)]="cant"></ion-input>
+      <ion-button>agregar</ion-button>
     </ion-item>
     <ion-item>
       <ion-label class="labels">Valor</ion-label>
-      <ion-input [(ngModel)]="valor"></ion-input>
+      <ion-input readonly='true' [(ngModel)]="valor"></ion-input>
     </ion-item>
     <ion-item-divider>
         <ion-label class="labels">Fecha</ion-label>
