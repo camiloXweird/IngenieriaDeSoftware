@@ -8,117 +8,141 @@
 </ion-header>
 
 <ion-content [scrollEvents]="false" class="bg-image">
-<br>
-<ion-card  class="card">
-<ion-card-header class= "card"> 
-    <ion-card-title> Datos de Compra</ion-card-title> 
-  </ion-card-header>
-  <ion-card-content > 
-  <ion-list>
-    <ion-item>
-      <ion-label class="labels">No. factura</ion-label>
-      <ion-input [(ngModel)]="factura"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label class="labels">Producto</ion-label>
-      <ion-select id='productos' [(ngModel)]="codigo" autofocus="true"></ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label class="labels">Cantidad</ion-label>
-      <ion-input [(ngModel)]="cant"></ion-input>
-      <ion-button>agregar</ion-button>
-    </ion-item>
-    <ion-item>
-      <ion-label class="labels">Valor</ion-label>
-      <ion-input readonly='true' [(ngModel)]="valor"></ion-input>
-    </ion-item>
-    <ion-item-divider>
-        <ion-label class="labels">Fecha</ion-label>
-      </ion-item-divider>
-      <ion-item>
-        <ion-label class="labels">Dia</ion-label>
-        <ion-select [(ngModel)]="fecha_dia">
-          <ion-select-option value="1">1</ion-select-option>
-          <ion-select-option value="2">2</ion-select-option>
-          <ion-select-option value="3">3</ion-select-option>
-          <ion-select-option value="4">4</ion-select-option>
-          <ion-select-option value="5">5</ion-select-option>
-          <ion-select-option value="6">6</ion-select-option>
-          <ion-select-option value="7">7</ion-select-option>
-          <ion-select-option value="8">8</ion-select-option>
-          <ion-select-option value="9">9</ion-select-option>
-          <ion-select-option value="10">10</ion-select-option>
-          <ion-select-option value="11">11</ion-select-option>
-          <ion-select-option value="12">12</ion-select-option>
-          <ion-select-option value="13">13</ion-select-option>
-          <ion-select-option value="14">14</ion-select-option>
-          <ion-select-option value="15">15</ion-select-option>
-          <ion-select-option value="16">16</ion-select-option>
-          <ion-select-option value="17">17</ion-select-option>
-          <ion-select-option value="18">18</ion-select-option>
-          <ion-select-option value="19">19</ion-select-option>
-          <ion-select-option value="20">20</ion-select-option>
-          <ion-select-option value="21">21</ion-select-option>
-          <ion-select-option value="22">22</ion-select-option>
-          <ion-select-option value="23">23</ion-select-option>
-          <ion-select-option value="24">24</ion-select-option>
-          <ion-select-option value="25">25</ion-select-option>
-          <ion-select-option value="26">26</ion-select-option>
-          <ion-select-option value="27">27</ion-select-option>
-          <ion-select-option value="28">28</ion-select-option>
-          <ion-select-option value="29">29</ion-select-option>
-          <ion-select-option value="30">30</ion-select-option>
-          <ion-select-option value="31">31</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label class="labels">Mes</ion-label>
-        <ion-select [(ngModel)]="fecha_mes">
-          <ion-select-option value="1">Enero</ion-select-option>
-          <ion-select-option value="2">Febrero</ion-select-option>
-          <ion-select-option value="3">Marzo</ion-select-option>
-          <ion-select-option value="4">Abril</ion-select-option>
-          <ion-select-option value="5">Mayo</ion-select-option>
-          <ion-select-option value="6">Junio</ion-select-option>
-          <ion-select-option value="7">Julio</ion-select-option>
-          <ion-select-option value="8">Agosto</ion-select-option>
-          <ion-select-option value="9">Septiembre</ion-select-option>
-          <ion-select-option value="10">Octubre</ion-select-option>
-          <ion-select-option value="11">Noviembre</ion-select-option>
-          <ion-select-option value="12">Diciembre</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label class="labels">Año</ion-label>
-        <ion-select [(ngModel)]="fecha_anno">
-          <ion-select-option value="2018">2018</ion-select-option>
-          <ion-select-option value="2019">2019</ion-select-option>
-          <ion-select-option value="2020">2020</ion-select-option>
-        </ion-select>
-      </ion-item>
-    <ion-item-divider>
-      <ion-label>
-       <ion-card-title> Datos de Cliente</ion-card-title> 
-       <br>
-      </ion-label>
-      
-    </ion-item-divider>
-    <ion-item>
-      <ion-label class="labels">Nombre</ion-label>
-      <ion-input [(ngModel)]="nombre"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label class="labels">Telefono</ion-label>
-      <ion-input [(ngModel)]="telefono"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label class="labels">Correo</ion-label>
-      <ion-input [(ngModel)]="correo"></ion-input>
-    </ion-item>
-  </ion-list>
-  </ion-card-content >
-</ion-card > 
-<ion-button  color="light" class= "boton"expand="block" (click)="enviar_Datos()">Aceptar compra</ion-button>
+  <br>
+  <ion-card class="card">
+    <ion-card-header class="card">
+      <ion-card-title> Datos de Compra</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label id='factura' class="labels">No. factura</ion-label>
+          <ion-input [(ngModel)]="factura"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="labels">Producto</ion-label>
+          <ion-select [interfaceOptions]="customAlertOptions" id='productos' [(ngModel)]="codigo" autofocus="true">
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label id='cantidad' class="labels">Cantidad</ion-label>
+          <ion-input [(ngModel)]="cant"></ion-input>
+          <ion-button (click)='agregar()'>agregar</ion-button>
+        </ion-item>
+
+        <ion-item-divider>
+          <ion-grid id='tableCompra'>
+            <ion-row>
+              <ion-col>
+                <b>
+                  Nombre
+                </b>
+              </ion-col>
+              <ion-col>
+                <b>
+                  Cantidad
+                </b>
+              </ion-col>
+              <ion-col>
+                <b>
+                  Valor
+                </b>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-item-divider>
+        <ion-item>
+          <ion-label class="labels">Valor total</ion-label>
+          <ion-input readonly='true' [(ngModel)]="valor">{{valorTotal}}</ion-input>
+        </ion-item>
+        <ion-item-divider>
+          <ion-label class="labels">Fecha</ion-label>
+        </ion-item-divider>
+        <ion-item>
+          <ion-label class="labels">Dia</ion-label>
+          <ion-select [(ngModel)]="fecha_dia">
+            <ion-select-option value="1">1</ion-select-option>
+            <ion-select-option value="2">2</ion-select-option>
+            <ion-select-option value="3">3</ion-select-option>
+            <ion-select-option value="4">4</ion-select-option>
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="6">6</ion-select-option>
+            <ion-select-option value="7">7</ion-select-option>
+            <ion-select-option value="8">8</ion-select-option>
+            <ion-select-option value="9">9</ion-select-option>
+            <ion-select-option value="10">10</ion-select-option>
+            <ion-select-option value="11">11</ion-select-option>
+            <ion-select-option value="12">12</ion-select-option>
+            <ion-select-option value="13">13</ion-select-option>
+            <ion-select-option value="14">14</ion-select-option>
+            <ion-select-option value="15">15</ion-select-option>
+            <ion-select-option value="16">16</ion-select-option>
+            <ion-select-option value="17">17</ion-select-option>
+            <ion-select-option value="18">18</ion-select-option>
+            <ion-select-option value="19">19</ion-select-option>
+            <ion-select-option value="20">20</ion-select-option>
+            <ion-select-option value="21">21</ion-select-option>
+            <ion-select-option value="22">22</ion-select-option>
+            <ion-select-option value="23">23</ion-select-option>
+            <ion-select-option value="24">24</ion-select-option>
+            <ion-select-option value="25">25</ion-select-option>
+            <ion-select-option value="26">26</ion-select-option>
+            <ion-select-option value="27">27</ion-select-option>
+            <ion-select-option value="28">28</ion-select-option>
+            <ion-select-option value="29">29</ion-select-option>
+            <ion-select-option value="30">30</ion-select-option>
+            <ion-select-option value="31">31</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label class="labels">Mes</ion-label>
+          <ion-select [(ngModel)]="fecha_mes">
+            <ion-select-option value="1">Enero</ion-select-option>
+            <ion-select-option value="2">Febrero</ion-select-option>
+            <ion-select-option value="3">Marzo</ion-select-option>
+            <ion-select-option value="4">Abril</ion-select-option>
+            <ion-select-option value="5">Mayo</ion-select-option>
+            <ion-select-option value="6">Junio</ion-select-option>
+            <ion-select-option value="7">Julio</ion-select-option>
+            <ion-select-option value="8">Agosto</ion-select-option>
+            <ion-select-option value="9">Septiembre</ion-select-option>
+            <ion-select-option value="10">Octubre</ion-select-option>
+            <ion-select-option value="11">Noviembre</ion-select-option>
+            <ion-select-option value="12">Diciembre</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label class="labels">Año</ion-label>
+          <ion-select [(ngModel)]="fecha_anno">
+            <ion-select-option value="2018">2018</ion-select-option>
+            <ion-select-option value="2019">2019</ion-select-option>
+            <ion-select-option value="2020">2020</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item-divider>
+          <ion-label>
+            <ion-card-title> Datos de Cliente</ion-card-title>
+            <br>
+          </ion-label>
+
+        </ion-item-divider>
+        <ion-item>
+          <ion-label class="labels">Nombre</ion-label>
+          <ion-input [(ngModel)]="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="labels">Telefono</ion-label>
+          <ion-input [(ngModel)]="telefono"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label class="labels">Correo</ion-label>
+          <ion-input [(ngModel)]="correo"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-button color="light" class="boton" expand="block" (click)="enviar_Datos()">Aceptar compra</ion-button>
 
 
 </ion-content>
